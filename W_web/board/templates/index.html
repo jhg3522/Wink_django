@@ -2,7 +2,7 @@
 
 <html>
 	<head>
-		<title>Snapshot by TEMPLATED</title>
+		<title>WINK</title>
 		<meta charset="utf-8" />
 		<meta name="viewport" content="width=device-width, initial-scale=1" />
 		<link rel="stylesheet" href="/static/css/main.css" />
@@ -13,7 +13,7 @@
 				<nav id="nav">
 					<ul>
 						<li><a href="/" class="active"><span class="icon fa-home"></span></a></li>
-						<li><a href="post_list/"><span class="icon fa-camera-retro"></span></a></li>
+						<li><a href="board/"><span class="icon fa-camera-retro"></span></a></li>
 						<li><a href="generic/"><span class="icon fa-file-text-o"></span></a></li>
 					</ul>
 				</nav>
@@ -25,7 +25,7 @@
 								<p>daily look등을 공유해보세요</p>
 								<ul class="actions">
 									<li><a href="#galleries" class="button alt scrolly big">로그인</a></li>
-									<li><a href="#galleries" class="button alt scrolly big">회원가입</a></li>
+									<li><a href="signup/" class="button alt scrolly big">회원가입</a></li>
 								</ul>
 							</div>
 						</section>
@@ -34,6 +34,15 @@
 									<header class="special">
 										<h2>MAIN</h2>
 									</header>
+									{% block content %}
+									{% for documnet in documnet.all %}
+										<h1>{{documnet.title}}</h1>
+										<p>{{documnet.m_date}}</p>
+										<p>{{documnet.content}}</p>
+										<br>
+										<br>
+									{% endfor %}
+									{% endblock content%}
 								</div>
 						</section>
 				</section>

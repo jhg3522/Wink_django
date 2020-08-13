@@ -18,9 +18,9 @@ class Board(models.Model):
         return str(self.title)
 
 class Document(models.Model):
-    title = models.CharField(max_length=100, null=False, verbose_name="게시물 제목")
+    board = models.ForeignKey(Board, on_delete=models.CASCADE, null=False ,verbose_name="게시판")
+    title = models.CharField(max_length=20, null=False, verbose_name="게시물 제목")
     content = models.TextField(max_length=500, null=False, verbose_name="게시물 내용")
-    owner = models.ForeignKey(User, on_delete=models.SET_NULL, null=True, verbose_name="게시물 주인")
     m_date = models.DateTimeField(default=now, verbose_name="작성일")
     write_permission = models.BooleanField(null=False, default=False, verbose_name="쓰기 권한")
     def __str__(self):

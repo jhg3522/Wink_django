@@ -1,12 +1,18 @@
 {% extends 'base.html' %}
- 
+
 {% block title %}Login{% endblock %}
- 
+
 {% block content %}
-{% for board in boards.all %}
-    <h1>{{board.title}}</h1><br>
-    <p>{{board.write_permission}}</p><br>
-    <p>{{board.read_permission}}</p>
-    <br>
-{%endfor%}
+<div class="container">
+    <h2>게시글 작성</h2>
+    <form action="">
+        <h4>제목 :</h4>
+        <input type="text" name="title">
+        <br><br>
+        <h4>본문 :</h4>
+        <textarea name="content" cols="40" rows="10"></textarea>
+        <br><br>
+        <input class="btn btn-dark" type="submit" value="제출하기">
+    </form>
+</div>
 {% endblock %}

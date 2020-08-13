@@ -12,8 +12,9 @@ def signup(request):
         return render(request,'signup.html')
     return render(request,'signup.html')
 
-def login(request):
-    return render(request,'index.html')
+
+def sign(request):
+    return render(request,'signup.html')
 
 def logout(request):
     return render(request,'index.html')
