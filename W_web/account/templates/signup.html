@@ -5,19 +5,20 @@
 {% block content %}
 <div class="container">
     <h1>Sign Up!</h1>
-    <form action="">
-        Username:
-        <br>
-        <input name="username" type="text" placeholder="name">
-        <br>
-        Password:
-        <br>
-        <input name="password1" type="password" placeholder="password">
-        Confirm Password:
-        <br>
-        <input name="password2" type="password" placeholder="password">
-        <br><br>
-        <input type="submit" class="btn btn-primary" value="sign up">
+    <!-- #1 -->
+    {% if form.errors %}
+    <p style="color:red;">양식에 맞게 작성해주세요.</p>
+    {% endif %}
+
+    <!-- #2 -->
+    <form method="post" action="{% url 'reviewBoard:join' %}">
+    <!-- #3 -->
+    {% csrf_token %}
+
+    <!-- #4 -->
+    {{form.as_p}}
+
+    <button type="submit"> 가입하기 </button>
     </form>
 </div>
 {% endblock %}

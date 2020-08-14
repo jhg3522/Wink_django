@@ -3,36 +3,22 @@
 	<head>
 		<title></title>
 		<meta charset="utf-8" />
-		<meta name="viewport" content="width=device-width, initial-scale=1" />
-		<link rel="stylesheet" href="/static/css/main.css" />
+		<link rel="stylesheet" href="/" />
 	</head>
 	<body>
-		<div class="page-wrap">
-				<nav id="nav">
-					<ul>
-						<li><a href="/"><span class="icon fa-home"></span></a></li>
-						<li><a href="../board/"><span class="icon fa-camera-retro"></span></a></li>
-						<li><a href="../generic/"><span class="icon fa-file-text-o"></span></a></li>
-					</ul>
-				</nav>
-				<section id="main">
-					<section>
-							<div class="inner">
-								<header>
-									<h1></h1>
-								</header>
-								{% block content %}
-
-								{% endblock%}
-							</div>
-						</section>
-				</section>
+		<div class="header">
+			<nav id="nav">
+				<h1><a href="#"><img src="" alt="logo"></a></h1>
+				<ul>
+					<li><a href="">Daily Look</a></li>
+					<li><a href="">Community</a></li>
+					<li><a href="">Donation</a></li>
+					<li><a href="">Event</a></li>
+				</ul>
+			</nav>
 		</div>
-		<script src="/board/static/js/jquery.min.js"></script>
-			<script src="/board/static/js/jquery.poptrox.min.js"></script>
-			<script src="/board/static/js/jquery.scrolly.min.js"></script>
-			<script src="/board/static/js/skel.min.js"></script>
-			<script src="/board/static/js/util.js"></script>
-			<script src="/board/static/js/main.js"></script>
+		{% block content %}
+
+		{% endblock%}
 	</body>
 </html>

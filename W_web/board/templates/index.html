@@ -1,57 +1,90 @@
 <!DOCTYPE HTML>
-
 <html>
 	<head>
-		<title>WINK</title>
+		<title></title>
 		<meta charset="utf-8" />
-		<meta name="viewport" content="width=device-width, initial-scale=1" />
-		<link rel="stylesheet" href="/static/css/main.css" />
+		<link rel="stylesheet" href="../static/css/style.css"/>
+		<link rel="stylesheet" href="../static/css/reset.css"/>
+		<link rel="stylesheet" href="../static/css/swiper.min.css"/>
+		<script type="text/javascript" src="../static/js/swiper.min.js"></script>
 	</head>
 	<body>
-		<div class="page-wrap">
-
-				<nav id="nav">
-					<ul>
-						<li><a href="/" class="active"><span class="icon fa-home"></span></a></li>
-						<li><a href="board/"><span class="icon fa-camera-retro"></span></a></li>
-						<li><a href="generic/"><span class="icon fa-file-text-o"></span></a></li>
-					</ul>
-				</nav>
-
-				<section id="main">
-						<section id="banner" style="background-image: url(/static/images/banner.jpg);">
-							<div class="inner">
-								<h1>HG's Pages</h1>
-								<p>daily look등을 공유해보세요</p>
-								<ul class="actions">
-									<li><a href="#galleries" class="button alt scrolly big">로그인</a></li>
-									<li><a href="signup/" class="button alt scrolly big">회원가입</a></li>
-								</ul>
-							</div>
-						</section>
-						<section id="galleries">
-								<div class="gallery">
-									<header class="special">
-										<h2>MAIN</h2>
-									</header>
-									{% block content %}
-									{% for documnet in documnet.all %}
-										<h1>{{documnet.title}}</h1>
-										<p>{{documnet.m_date}}</p>
-										<p>{{documnet.content}}</p>
-										<br>
-										<br>
-									{% endfor %}
-									{% endblock content%}
-								</div>
-						</section>
-				</section>
+		<div class="header">
+			<nav id="nav">
+				<h1><a href="#">HG's Page</a></h1>
+				<ul>
+					<li><a href="">Daily Look</a></li>
+					<li><a href="">Community</a></li>
+					<li><a href="">Donation</a></li>
+					<li><a href="">Event</a></li>
+				</ul>
+			</nav>
 		</div>
-			<script src="/board/static/js/jquery.min.js"></script>
-			<script src="/board/static/js/jquery.poptrox.min.js"></script>
-			<script src="/board/static/js/jquery.scrolly.min.js"></script>
-			<script src="/board/static/js/skel.min.js"></script>
-			<script src="/board/static/js/util.js"></script>
-			<script src="/board/static/js/main.js"></script>
-	</body>
+		<div class="main-wrapper">
+			<div class="banner">
+				<div class="swiper-container main-top">
+                    <div class="swiper-wrapper">
+                        <div class="swiper-slide">
+                            <div class="img" style="background-color: #000000;"></div>
+                            <div class="text">
+                                <p>Daily look을 올리고 소통</p>
+                                <h3>존 멋 탱</h3>
+                            </div>
+                        </div>
+                        <div class="swiper-slide">
+                            <div class="img" style="background-color: #000000;"></div>
+                            <div class="text">
+                                <p>Community를 통한 style 공유</p>
+                                <h3>존 잼</h3>
+                            </div>
+                        </div>
+                        <div class="swiper-slide">
+                            <div class="img" style="background-color: #000000;"></div>
+                            <div class="text">
+                                <p>Donation을 통한 나에게 기부</p>
+                                <h3>Plz</h3>
+                            </div>                
+                        </div>
+                    </div>
+                </div>
+                <div class="swiper-pagination paging"></div>
+			<div class="content">
+				{% block content %}
+				{% endblock%}
+			</div>
+		</div>
+		<script>
+			new Swiper('.main-top', {
+
+				effect: 'fade', // 페이드 효과 사용
+
+				loop: true, // 무한 반복
+				pagination: { // 페이징 설정
+					el: '.paging',
+					clickable: true, // 페이징을 클릭하면 해당 영역으로 이동, 필요시 지정해 줘야 기능 작동
+				},
+				speed: 2000,
+				autoplay: {
+					delay: 3000,
+				},
+			});
+
+				$(function () {
+					var rollHeader = 100;
+					$(window).scroll(function () {
+						var scroll = getCurrentScroll();
+						if (scroll >= rollHeader) {
+							$('.header').addClass('roll');
+						}
+						else {
+							$('.header').removeClass('roll');
+						}
+					});
+					function getCurrentScroll() {
+						return window.pageYOffset || document.documentElement.scrollTop;
+					}
+				});
+
+			</script>
+		</body>
 </html>

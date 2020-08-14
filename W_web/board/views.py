@@ -1,6 +1,8 @@
 from django.shortcuts import render, redirect,get_object_or_404
 from .models import Board, Document
 from django.utils.timezone import now
+
+
 # Create your views here.
 
 #메인페이지
@@ -29,3 +31,4 @@ def create(request):
     document.m_date = now()
     document.save()
     return redirect('/board/'+str(document.title))
+
