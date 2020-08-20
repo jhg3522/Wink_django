@@ -1,7 +1,7 @@
 .inner {max-width:1200px;margin:0 auto; padding:0 20px;}
 header {position:fixed; width:100%; top:0; left:0; height:90px; background-color:rgba(0,0,0,.1); -webkit-transition-duration:0.4s; -webkit-transition-timing-function:ease; transition-duration:0.4s; transition-timing-function:ease;}
-header .inner .logo_top {padding:10px 0 10px 10px;font-size:1.2rem; line-height:1em;font-weight:bold; color:#fff;}
-header .inner ul li { display:block; font-size:0.6rem; line-height:1em; font-weight:normal; color:#aaa;}
+header .logo_top {padding:10px 0 10px 10px;font-size:1.2rem; line-height:1em;font-weight:bold; color:#fff;}
+header ul li { display:block; font-size:0.6rem; line-height:1em; font-weight:normal; color:#aaa;}
 section article { margin:30px 0; font-size:1rem; line-height:1.7em;}
 .down { background-color:rgba(0,0,0,.8); -webkit-transition-duration:0.4s; -webkit-transition-timing-function:ease;  transition-duration:0.4s; transition-timing-function:ease;}
 

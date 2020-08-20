@@ -1,28 +1,9 @@
-<!DOCTYPE HTML>
-<html>
-	<head>
-		<title></title>
-		<meta charset="utf-8" />
-		<link rel="stylesheet" href="../static/css/style.css"/>
-		<link rel="stylesheet" href="../static/css/reset.css"/>
-		<link rel="stylesheet" href="../static/css/swiper.min.css"/>
-		<script type="text/javascript" src="../static/js/swiper.min.js"></script>
-	</head>
-	<body>
-		<div class="header">
-			<nav id="nav">
-				<h1><a href="#">HG's Page</a></h1>
-				<ul>
-					<li><a href="">Daily Look</a></li>
-					<li><a href="">Community</a></li>
-					<li><a href="">Donation</a></li>
-					<li><a href="">Event</a></li>
-				</ul>
-			</nav>
-		</div>
+{% extends 'base.html' %}
+{% load static %}
+	{% block content %}
 		<div class="main-wrapper">
 			<div class="banner">
-				<div class="swiper-container main-top">
+				<div class="swiper-container swipe1">
                     <div class="swiper-wrapper">
                         <div class="swiper-slide">
                             <div class="img" style="background-color: #000000;"></div>
@@ -43,48 +24,15 @@
                             <div class="text">
                                 <p>Donation을 통한 나에게 기부</p>
                                 <h3>Plz</h3>
-                            </div>                
+                            </div>
                         </div>
                     </div>
                 </div>
-                <div class="swiper-pagination paging"></div>
+                <div class="swiper-pagination"></div>
+			</div>
 			<div class="content">
-				{% block content %}
-				{% endblock%}
+
+
 			</div>
 		</div>
-		<script>
-			new Swiper('.main-top', {
-
-				effect: 'fade', // 페이드 효과 사용
-
-				loop: true, // 무한 반복
-				pagination: { // 페이징 설정
-					el: '.paging',
-					clickable: true, // 페이징을 클릭하면 해당 영역으로 이동, 필요시 지정해 줘야 기능 작동
-				},
-				speed: 2000,
-				autoplay: {
-					delay: 3000,
-				},
-			});
-
-				$(function () {
-					var rollHeader = 100;
-					$(window).scroll(function () {
-						var scroll = getCurrentScroll();
-						if (scroll >= rollHeader) {
-							$('.header').addClass('roll');
-						}
-						else {
-							$('.header').removeClass('roll');
-						}
-					});
-					function getCurrentScroll() {
-						return window.pageYOffset || document.documentElement.scrollTop;
-					}
-				});
-
-			</script>
-		</body>
-</html>
+	{% endblock%}
