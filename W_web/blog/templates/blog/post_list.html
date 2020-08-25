@@ -6,8 +6,10 @@
 </head>
 <body>
 <h1>Blog</h1>
-{% for p in posts %}
+{% for p in object_list %}
     <h2>{{ p.title }}</h2>
+    <h4>{{ p.created }} by {{ p.author }}</h4>
+    <p>{{ p.content }}</p>
 {% endfor %}
 </body>
 </html>
