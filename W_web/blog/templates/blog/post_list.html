@@ -28,13 +28,33 @@
         </div>
     </div>
 </div>
-<h1>Blog</h1>
-{% for p in object_list %}
-    <h2>{{ p.title }}</h2>
-    <h4>{{ p.created }} by {{ p.author }}</h4>
-    <p>{{ p.content }}</p>
-{% endfor %}
+<div class="container">
 
+    <div class="row">
+
+        <!-- Blog Entries Column -->
+        <div class="col-md">
+
+            <h1 class="my-8">Daily Look</h1>
+
+            {% for p in object_list %}
+            <div class="card mb-8">
+                <img class="card-img-top" src="http://placehold.it/750x300" alt="Card image cap">
+                <div class="card-body">
+                    <h2 class="card-title">{{ p.title }}</h2>
+                    <p class="card-text">{{ p.content }}</p>
+                    <a href="#" class="btn btn-primary">Read More &rarr;</a>
+                </div>
+                <div class="card-footer text-muted">
+                    Posted on {{ p.created }} by {{ p.author }}
+                </div>
+            </div>
+            {% endfor %}
+        </div>
+
+    </div>
+    <!-- /.row -->
+</div>
 <script src="{% static 'blog/_assets/js/jquery.min.js' %}"></script>
 <script src="{% static 'blog/_assets/js/popper.min.js' %}"></script>
 <script src="{% static 'blog/_assets/js/custom.js' %}"></script>
