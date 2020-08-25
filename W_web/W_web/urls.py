@@ -15,10 +15,7 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path , include
-from board.views import main_index
+
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('', main_index),
-    path('', include('board.urls')),
-    path('', include('account.urls')),
 ]

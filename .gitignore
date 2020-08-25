@@ -2,4 +2,3 @@
 /.idea/
 settings.py
 db.sqlite3
-/template/
