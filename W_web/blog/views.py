@@ -1,6 +1,6 @@
-from django.shortcuts import render
+from django.shortcuts import render, redirect
 from .models import Post ,Category
-from django.views.generic import ListView, DetailView
+from django.views.generic import ListView, DetailView,UpdateView,CreateView
 
 class PostList(ListView):
     model = Post
@@ -15,9 +15,28 @@ class PostList(ListView):
         context['all_post'] =Post.objects.count()
         return context
 
+class PostUpdate(UpdateView):
+    model = Post
+    fields = [
+        'title', 'content', 'head_image', 'category'
+    ]
 
 class PostDetail(DetailView):
     model = Post
+
+class PostCreate(CreateView):
+    model = Post
+    fields = [
+        'title', 'content', 'head_image', 'category'
+    ]
+
+    def form_valid(self, form):
+        current_user = self.request.user
+        if current_user.is_authenticated:
+            form.instance.author = current_user
+            return super(type(self),self).form_valid(form)
+        else:
+            return redirect('/blog/')
 
 class PostListByCategory(ListView):
 

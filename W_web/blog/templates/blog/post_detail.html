@@ -10,12 +10,17 @@
     {% else %}
         <span class="badge badge-primary float-right">미분류</span>
     {% endif %}
+
+
+
     <p class="lead">
         by
         <a href="#">{{ object.author.username }}</a>
     </p>
     <hr>
-
+    {% if request.user == object.author %}
+        <button type="button" class="btn btn-sm btn-outline-danger float-right" onclick="location.href='{{ object.get_update_url }}'">EDIT</button>
+    {% endif %}
     <p>Posted on {{ object.created }}</p>
 
     <hr>
@@ -24,7 +29,7 @@
     {% endif %}
 
     <hr>
-    <p class="lead">{{ object.content }}</p>
+    {{ object.get_markdown_content | safe }}
     <hr>
 
     <!-- Comments Form -->
