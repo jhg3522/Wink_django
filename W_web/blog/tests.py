@@ -1,6 +1,16 @@
 from django.test import TestCase,Client
 from bs4 import BeautifulSoup
+from .models import Post,Category
+from django.utils import timezone
+from django.contrib.auth.models import User
 
+def create_category(name='life', description=None):
+    category, is_created = Category.objects.get_or_create(
+        name=name,
+        description=description
+    )
+
+    return category
 
 
 class TestView(TestCase):

@@ -29,20 +29,42 @@
     </div>
 </div>
 <div class="container">
-    <h1 class="my-8">Daily Look</h1>
+    <h1 class="my-9">Daily Look</h1>
     <div class="row">
         <!-- Blog Entries Column -->
-        <div class="col-md-8">
+        <div class="col-md-9">
             {% block content %}
             {% endblock %}
         </div>
 
+    <div class="col-md-3">
+        <!-- Categories Widget -->
+        <div class="card my-3">
+            <h5 class="card-header">Categories</h5>
+            <div class="card-body">
+                <div class="row">
+                    <div class="col-lg">
+                        <ul class="list-unstyled mb-0">
+                            <li>
+                                <a href="#">미분류 ({{ uncategory }})</a>
+                            </li>
+                            {% for category in category_list %}
+                                <li>
+                                    <a href="#">{{ category.name }}({{ category.post_set.count }})</a>
+                                </li>
+                            {% endfor %}
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
     </div>
-    <!-- /.row -->
-</div>
-<script src="{% static 'blog/_assets/js/jquery.min.js' %}"></script>
-<script src="{% static 'blog/_assets/js/popper.min.js' %}"></script>
-<script src="{% static 'blog/_assets/js/custom.js' %}"></script>
-<script src="{% static 'blog/bootstrap/bootstrap.min.js' %}"></script>
+    </div>
+        <!-- /.row -->
+    </div>
+    <script src="{% static 'blog/_assets/js/jquery.min.js' %}"></script>
+    <script src="{% static 'blog/_assets/js/popper.min.js' %}"></script>
+    <script src="{% static 'blog/_assets/js/custom.js' %}"></script>
+    <script src="{% static 'blog/bootstrap/bootstrap.min.js' %}"></script>
 </body>
 </html>
