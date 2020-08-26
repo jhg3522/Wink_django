@@ -1,26 +1,29 @@
 {% extends 'blog/base.html' %}
 {% block content %}
-    {% for p in object_list %}
-        <div class="card mb-8">
-            {% if p.head_image %}
-                <img class="card-img-top" src="{{ p.head_image.url }}" alt="Card image cap">
-            {% else %}
-                <img class="card-img-top" src="https://picsum.photos/750/300/?random" alt="Card image cap">
-            {% endif %}
-            <div class="card-body">
-                {% if p.category %}
-                <span class="badge badge-primary float-right">{{ p.category }}</span>
+    <h1>BLOG {% if category %}<small class="text-muted"> :{{ category }}</small>{% endif%}</h1>
+    {% if object_list.exists %}
+        {% for p in object_list %}
+            <div class="card mb-8">
+                {% if p.head_image %}
+                    <img class="card-img-top" src="{{ p.head_image.url }}" alt="Card image cap">
                 {% else %}
-                <span class="badge badge-primary float-right">미분류</span>
+                    <img class="card-img-top" src="https://picsum.photos/750/300/?random" alt="Card image cap">
                 {% endif %}
-                <h2 class="card-title">{{ p.title }}</h2>
-                <p class="card-text">{{ p.content | truncatewords:10 }}</p>
-                <a href="{{ p.get_absolute_url }}" class="btn btn-primary">Read More &rarr;</a>
+                <div class="card-body">
+                    {% if p.category %}
+                        <span class="badge badge-primary float-right">{{ p.category }}</span>
+                    {% else %}
+                        <span class="badge badge-primary float-right">미분류</span>
+                    {% endif %}
+                    <h2 class="card-title">{{ p.title }}</h2>
+                    <p class="card-text">{{ p.content | truncatewords:10 }}</p>
+                    <a href="{{ p.get_absolute_url }}" class="btn btn-primary">Read More &rarr;</a>
+                </div>
+                <div class="card-footer text-muted">
+                    Posted on {{ p.created }} by {{ p.author }}
+                </div>
             </div>
-            <div class="card-footer text-muted">
-                Posted on {{ p.created }} by {{ p.author }}
-            </div>
-        </div>
-        <br><br>
-    {% endfor %}
+            <br><br>
+        {% endfor %}
+    {% endif %}
 {% endblock %}
