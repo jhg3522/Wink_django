@@ -45,7 +45,7 @@
         </div>
     </div>
 
-    <div id="commnet_list">
+    <div id="comment_list">
     {% for comment in object.comment_set.all %}
         <!-- Single Comment -->
         <div class="media mb-4" id="comment-id-{{ comment.pk }}">
@@ -53,7 +53,7 @@
             <div class="media-body">
                 {% if comment.author == request.user %}
                 <button class="btn btn-sm btn-info float-right">EDIT</button>
-                <button class="btn btn-sm btn-warning float-right">DELETE</button><br>
+                <button class="btn btn-sm btn-warning float-right" onclick="location.href='/blog/delete_comment/{{ comment.pk }}'">DELETE</button><br>
                 {% endif %}
                 <h5 class="mt-0">{{ comment.author }}<small class="text-muted">{{ comment.created }}</small></h5>
                 {{ comment.get_markdown_content | safe }}
