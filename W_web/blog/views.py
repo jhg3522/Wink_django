@@ -1,6 +1,8 @@
 from django.shortcuts import render, redirect
 from .models import Post ,Category
+from .forms import CommentForm
 from django.views.generic import ListView, DetailView,UpdateView,CreateView
+from django.contrib.auth.mixins import LoginRequiredMixin
 
 class PostList(ListView):
     model = Post
@@ -24,7 +26,15 @@ class PostUpdate(UpdateView):
 class PostDetail(DetailView):
     model = Post
 
-class PostCreate(CreateView):
+    def get_context_data(self, *, object_list=None, **kwargs):
+        context = super(PostDetail,self).get_context_data(**kwargs)
+        context['category_list'] = Category.objects.all()
+        context['uncategory'] = Post.objects.filter(category=None).count()
+        context['comment_form'] = CommentForm()
+        return context
+
+
+class PostCreate(LoginRequiredMixin,CreateView):
     model = Post
     fields = [
         'title', 'content', 'head_image', 'category'
@@ -63,6 +73,20 @@ class PostListByCategory(ListView):
             context['category'] = category
         # context['title'] = 'BLOG - {}'.format(category.name)
         return context
+
+def new_comment(request, pk):
+    post = Post.objects.get(pk=pk)
+
+    if request.method == 'POST':
+        comment_form = CommentForm(request.POST)
+        if comment_form.is_valid():
+            comment = comment_form.save(commit=False)
+            comment.post = post
+            comment.author = request.user
+            comment.save()
+            return redirect(comment.get_absolute_url())
+    else:
+        redirect('/blog/')
 
 
 # def post_detail(request, pk):
