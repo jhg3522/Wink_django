@@ -14,9 +14,15 @@
         '/ws/community/' + roomName + '/');
 
     chatSocket.onmessage = function(e) {
+        var rand = Math.floor(Math.random() *100);
         var data = JSON.parse(e.data);
         var message = data['message'];
-        document.querySelector('#chat-log').value += (message + '\n');
+        var today = new Date();
+        var hours= today.getHours();
+        var minutes = today.getMinutes();
+        var seconds = today.getSeconds();
+        var time = hours+'시 : '+minutes+'분 : '+seconds+'초';
+        document.querySelector('#chat-log').value += ('익명'+rand+' : '+message +'                                                   time : '+ time + '\n');
     };
 
     chatSocket.onclose = function(e) {
