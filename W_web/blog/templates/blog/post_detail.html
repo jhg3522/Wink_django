@@ -51,7 +51,7 @@
             <img class="d-flex mr-3 rounded-circle" src="http://placehold.it/50x50" alt="">
             <div class="media-body">
                 {% if comment.author == request.user %}
-                <button class="btn btn-sm btn-info float-right">EDIT</button>
+                <button class="btn btn-sm btn-info float-right" onclick="location.href='/blog/edit_comment/{{ comment.pk }}/'" >EDIT</button>
                 <button class="btn btn-sm btn-warning float-right" onclick="location.href='/blog/delete_comment/{{ comment.pk }}'">DELETE</button><br>
                 {% endif %}
                 <h5 class="mt-0">{{ comment.author }}<small class="text-muted">{{ comment.created }}</small></h5>

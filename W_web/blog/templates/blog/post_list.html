@@ -20,7 +20,7 @@
                         <span class="badge badge-primary float-right">미분류</span>
                     {% endif %}
                     <h2 class="card-title">{{ p.title }}</h2>
-                    <p class="card-text">{{ p.content | truncatewords:10 }}</p>
+                    <p class="card-text">{{ p.content | truncatewords:5 }}</p>
                     <a href="{{ p.get_absolute_url }}" class="btn btn-primary">Read More &rarr;</a>
                 </div>
                 <div class="card-footer text-muted">
