@@ -1,7 +1,7 @@
 {% extends 'blog/base.html' %}
 {% block content %}
     {% if user.is_authenticated %}
-    <button type="button" class="btn btn-sm btn-primary float-right" onclick="location.href='/blog/create/'">new post</button>
+    <button type="button" class="btn btn-sm btn-dark float-right" onclick="location.href='/blog/create/'">new post</button>
     {% endif %}
 
     <h1>BLOG {% if category %}<small class="text-muted"> :{{ category }}</small>{% endif%}</h1>
@@ -15,13 +15,13 @@
                 {% endif %}
                 <div class="card-body">
                     {% if p.category %}
-                        <span class="badge badge-primary float-right">{{ p.category }}</span>
+                        <span class="badge badge-dark float-right">{{ p.category }}</span>
                     {% else %}
                         <span class="badge badge-primary float-right">미분류</span>
                     {% endif %}
                     <h2 class="card-title">{{ p.title }}</h2>
                     <p class="card-text">{{ p.content | truncatewords:5 }}</p>
-                    <a href="{{ p.get_absolute_url }}" class="btn btn-primary">Read More &rarr;</a>
+                    <a href="{{ p.get_absolute_url }}" class="btn btn-dark">Read More &rarr;</a>
                 </div>
                 <div class="card-footer text-muted">
                     Posted on {{ p.created }} by {{ p.author }}
